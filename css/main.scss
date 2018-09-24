@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300');
+
+@mixin transition($property, $duration, $speedCurve: ease) {
+	-moz-transition: $property $duration $speedCurve;
+	-o-transition: $property $duration $speedCurve;
+	-webkit-transition: $property $duration $speedCurve;
+	transition: $property $duration $speedCurve;
+}
+@mixin translate($valueX, $valueY) {
+	-o-transform: translate($valueX, $valueY);
+	-moz-transform: translate($valueX, $valueY);
+	-ms-transform: translate($valueX, $valueY);
+	-webkit-transform: translate($valueX, $valueY);
+	transform: translate($valueX, $valueY);
+}
+
+body {
+	font-family: 'Open Sans', sans-serif;
+}
+
+header {
+	background-image: linear-gradient(to right, #1a1e5b , #122d97);
+	color: #fff;
+	padding: 23px 15px 15px 15px;
+	.container {
+		margin: 0 auto;
+		max-width: 1170px;
+		position: relative;
+	}
+}
+
+#logo {
+	width: 79px;
+}
+
+#headerItems {
+	position: absolute;
+	right: 0;
+	top: 50%;
+	@include translate(0, -50%);
+}
+
+#headerNav {
+	font-weight: 300;
+	list-style: none;
+	margin: 0;
+	li {
+		display: inline-block;
+		a:hover {
+			cursor: pointer;
+		}
+	}
+}
+
+#navline {
+	height: 4px;
+	position: relative;
+}
+
+#nav-indicator-bar {
+	background-image: linear-gradient(to right, #f6b30a, #f2ca13);
+	height: 100%;
+}
+
+#nav-indicator {
+	display: none;
+	&.visible {
+		display: inline;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	header {
+		padding: 18px 30px 19px 30px;
+	}
+
+	#headerNav {
+		font-size: 1.2em;
+		li {
+			a {
+				padding: 15px 9px;
+				&:hover {
+					color: #f7b600;
+				}
+				&.active {
+					color: #f7b600;
+				}
+			}
+		}
+	}
+
+	#nav-indicator-bar {
+		background: url(../img/global-nav-indicator-bar.jpg) 2500px 0;
+		@include transition(all, 1s);
+	}
+
+	#nav-indicator {
+		height: 10px;
+		position: absolute;
+		top: -10px;
+		@include transition(all, 1s);
+		width: 30px;
+	}
+}
+
+@media screen and (min-width: 992px) {
+	header {
+		padding: 19px 35px;
+	}
+
+	#logo {
+		width: 101px;
+	}
+
+	#headerNav {
+		font-size: 1.5em;
+		li a {
+			padding: 15px;
+		}
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	header {
+		padding: 0;
+		.container {
+			padding: 24px 30px;
+		}
+	}
+
+	#headerItems {
+		right: 30px;
+	}
+
+	#logo {
+		width: 127px;
+	}
+
+	#headerNav {
+		font-size: 1.7em;
+		li {
+			a {
+				padding: 15px 20px;
+			}
+		}
+	}
+}
